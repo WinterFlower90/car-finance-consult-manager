@@ -1,4 +1,4 @@
-package com.pje.carfinanceconsult0manager.exception;
+package com.pje.carfinanceconsultmanager.exception;
 
 public class CNoMemberDataException extends RuntimeException {
     public CNoMemberDataException(String msg, Throwable t) {

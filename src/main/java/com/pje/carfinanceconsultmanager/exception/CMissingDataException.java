@@ -1,4 +1,4 @@
-package com.pje.carfinanceconsult0manager.exception;
+package com.pje.carfinanceconsultmanager.exception;
 
 public class CMissingDataException extends RuntimeException {
     public CMissingDataException(String msg, Throwable t) {

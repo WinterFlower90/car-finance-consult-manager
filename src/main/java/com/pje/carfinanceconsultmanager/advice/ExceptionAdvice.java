@@ -1,10 +1,10 @@
-package com.pje.carfinanceconsult0manager.advice;
+package com.pje.carfinanceconsultmanager.advice;
 
-import com.pje.basic.enums.ResultCode;
-import com.pje.basic.exception.CMissingDataException;
-import com.pje.basic.exception.CNoMemberDataException;
-import com.pje.basic.model.CommonResult;
-import com.pje.basic.service.ResponseService;
+import com.pje.carfinanceconsultmanager.enums.ResultCode;
+import com.pje.carfinanceconsultmanager.exception.CMissingDataException;
+import com.pje.carfinanceconsultmanager.exception.CNoMemberDataException;
+import com.pje.carfinanceconsultmanager.model.CommonResult;
+import com.pje.carfinanceconsultmanager.service.ResponseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;

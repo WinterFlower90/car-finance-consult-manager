@@ -1,9 +1,9 @@
-package com.pje.carfinanceconsult0manager.service;
+package com.pje.carfinanceconsultmanager.service;
 
-import com.pje.basic.enums.ResultCode;
-import com.pje.basic.model.CommonResult;
-import com.pje.basic.model.ListResult;
-import com.pje.basic.model.SingleResult;
+import com.pje.carfinanceconsultmanager.enums.ResultCode;
+import com.pje.carfinanceconsultmanager.model.CommonResult;
+import com.pje.carfinanceconsultmanager.model.ListResult;
+import com.pje.carfinanceconsultmanager.model.SingleResult;
 import org.springframework.stereotype.Service;
 
 @Service

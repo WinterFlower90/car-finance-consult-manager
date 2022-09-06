@@ -1,4 +1,4 @@
-package com.pje.carfinanceconsult0manager.configure;
+package com.pje.carfinanceconsultmanager.configure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

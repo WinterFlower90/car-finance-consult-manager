@@ -1,4 +1,4 @@
-package com.pje.carfinanceconsult0manager.model;
+package com.pje.carfinanceconsultmanager.model;
 
 import lombok.Getter;
 import lombok.Setter;
