@@ -1,5 +1,6 @@
 package com.pje.carfinanceconsultmanager.model;
 
+import com.pje.carfinanceconsultmanager.enums.CarReleaseStatus;
 import com.pje.carfinanceconsultmanager.enums.VehicleType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -25,6 +26,10 @@ public class CarModelRequest {
     @ApiModelProperty(notes = "차량 외장 타입(~30글자)", required = true)
     @Enumerated(value = EnumType.STRING)
     private VehicleType vehicleType; //차량 외장 타입
+
+    @ApiModelProperty(notes = "차량 status(~15글자)", required = true)
+    @Enumerated(value = EnumType.STRING)
+    private CarReleaseStatus carReleaseStatus;
 
     @ApiModelProperty(notes = "차량 정원", required = true)
     @NotNull

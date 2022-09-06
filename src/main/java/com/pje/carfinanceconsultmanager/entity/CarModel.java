@@ -1,5 +1,6 @@
 package com.pje.carfinanceconsultmanager.entity;
 
+import com.pje.carfinanceconsultmanager.enums.CarReleaseStatus;
 import com.pje.carfinanceconsultmanager.enums.VehicleType;
 import com.pje.carfinanceconsultmanager.interfaces.CommonModelBuilder;
 import com.pje.carfinanceconsultmanager.model.CarModelRequest;
@@ -28,6 +29,10 @@ public class CarModel {
     @Column(nullable = false, length = 30)
     @Enumerated(value = EnumType.STRING)
     private VehicleType vehicleType; //차량 외장 타입
+
+    @Column(nullable = false, length = 15)
+    @Enumerated(value = EnumType.STRING)
+    private CarReleaseStatus carReleaseStatus;
 
     @Column(nullable = false)
     private Double capacity; //차량 정원
@@ -75,6 +80,7 @@ public class CarModel {
         this.manufacturer = builder.manufacturer;
         this.modelName = builder.modelName;
         this.vehicleType = builder.vehicleType;
+        this.carReleaseStatus = builder.carReleaseStatus;
         this.capacity = builder.capacity;
         this.fullLength = builder.fullLength;
         this.fullWidth = builder.fullWidth;
@@ -95,6 +101,8 @@ public class CarModel {
         private final Manufacturer manufacturer;
         private final String modelName;
         private final VehicleType vehicleType; //차량 외장 타입
+
+        private final CarReleaseStatus carReleaseStatus;
         private final Double capacity; //차량 정원
         private final Double fullLength; //차량 전장
         private final Double fullWidth; //차량 전폭
@@ -114,6 +122,7 @@ public class CarModel {
             this.manufacturer = manufacturer;
             this.modelName = request.getModelName();
             this.vehicleType = request.getVehicleType();
+            this.carReleaseStatus = request.getCarReleaseStatus();
             this.capacity = request.getCapacity();
             this.fullLength = request.getFullLength();
             this.fullWidth = request.getFullWidth();
