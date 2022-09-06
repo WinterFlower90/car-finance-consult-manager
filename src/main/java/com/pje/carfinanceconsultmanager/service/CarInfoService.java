@@ -1,9 +1,11 @@
 package com.pje.carfinanceconsultmanager.service;
 
 import com.pje.carfinanceconsultmanager.entity.CarModel;
+import com.pje.carfinanceconsultmanager.entity.CarRating;
 import com.pje.carfinanceconsultmanager.entity.CarTrim;
+import com.pje.carfinanceconsultmanager.entity.Manufacturer;
 import com.pje.carfinanceconsultmanager.exception.CMissingDataException;
-import com.pje.carfinanceconsultmanager.model.CarInfoDetailResponse;
+import com.pje.carfinanceconsultmanager.model.*;
 import com.pje.carfinanceconsultmanager.repository.CarModelRepository;
 import com.pje.carfinanceconsultmanager.repository.CarRatingRepository;
 import com.pje.carfinanceconsultmanager.repository.CarTrimRepository;
@@ -87,4 +89,53 @@ public class CarInfoService {
 
         return new CarInfoDetailResponse.CarInfoDetailResponseBuilder(carModel, minPrice, maxPrice, carFuelTypesResult, minDisplacement, maxDisplacement, minFuelEfficiency, maxFuelEfficiency, minCapacity, maxCapacity).build();
     }
+
+    public Manufacturer getManufacturerData(long id) {
+        return manufacturerRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public void setManufacturer(ManufacturerRequest request) {
+        Manufacturer manufacturer = new Manufacturer.ManufacturerBuilder(request).build();
+        manufacturerRepository.save(manufacturer);
+    }
+
+    public CarModel getCarModelData(long id) {
+        return carModelRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public void setCarModel(Manufacturer manufacturer, CarModelRequest modelRequest) {
+        CarModel carModel = new CarModel.CarModelBuilder(manufacturer, modelRequest).build();
+        carModelRepository.save(carModel);
+    }
+
+    public ListResult<CarListItem> getCarModels() {
+        List<CarModel> carModels = carModelRepository.findAll();
+        List<CarListItem> result = new LinkedList<>();
+
+        carModels.forEach(carModel -> {
+            CarListItem addItem = new CarListItem.CarListItemBuilder(carModel).build();
+            result.add(addItem);
+        });
+        return ListConvertService.settingResult(result);
+    }
+
+    public CarRating getCarRatingData(long id) {
+        return carRatingRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public void setCarRating(CarModel carModel, CarRatingRequest request) {
+        CarRating carRating = new CarRating.CarRatingBuilder(carModel, request).build();
+        carRatingRepository.save(carRating);
+    }
+
+    public CarTrim getCarTrimData(long id) {
+        return carTrimRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public void setCarTrim(CarRating carRating, CarTrimRequest request) {
+        CarTrim carTrim = new CarTrim.CarTrimBuilder(carRating, request).build();
+        carTrimRepository.save(carTrim);
+    }
+
+
 }

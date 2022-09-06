@@ -1,11 +1,9 @@
 package com.pje.carfinanceconsultmanager.controller;
 
-import com.pje.carfinanceconsultmanager.entity.CarRating;
 import com.pje.carfinanceconsultmanager.entity.CarTrim;
-import com.pje.carfinanceconsultmanager.model.CarTrimRequest;
 import com.pje.carfinanceconsultmanager.model.CommonResult;
 import com.pje.carfinanceconsultmanager.model.ConsultationDetailsRequest;
-import com.pje.carfinanceconsultmanager.service.CarTrimService;
+import com.pje.carfinanceconsultmanager.service.CarInfoService;
 import com.pje.carfinanceconsultmanager.service.ConsultationDetailsService;
 import com.pje.carfinanceconsultmanager.service.ResponseService;
 import io.swagger.annotations.Api;
@@ -24,12 +22,12 @@ import javax.validation.Valid;
 @RequestMapping("/V1/consult-detail")
 public class ConsultationDetailsController {
     private final ConsultationDetailsService consultationDetailsService;
-    private final CarTrimService carTrimService;
+    private final CarInfoService carInfoService;
 
     @ApiOperation(value = "자동차 상담 내역 등록하기")
     @PostMapping("/new")
     public CommonResult setConsultDetail(@RequestBody @Valid ConsultationDetailsRequest request) {
-        CarTrim carTrim = carTrimService.getCarTrimData(request.getCarTrimId());
+        CarTrim carTrim = carInfoService.getCarTrimData(request.getCarTrimId());
         consultationDetailsService.setConsultationDetails(carTrim, request);
         return ResponseService.getSuccessResult();
     }
