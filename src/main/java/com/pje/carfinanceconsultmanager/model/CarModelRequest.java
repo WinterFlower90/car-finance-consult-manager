@@ -1,6 +1,5 @@
 package com.pje.carfinanceconsultmanager.model;
 
-import com.pje.carfinanceconsultmanager.entity.Manufacturer;
 import com.pje.carfinanceconsultmanager.enums.VehicleType;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
