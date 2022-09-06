@@ -35,7 +35,7 @@ public class CarTrim {
     private FuelType fuelType; // 연료 타입
 
     @Column(nullable = false)
-    private Double engineDisplacement; //배기량 cc
+    private Integer engineDisplacement; //배기량 cc
 
     @Column(nullable = false)
     private Double carPrice; //차량 가격
@@ -103,7 +103,7 @@ public class CarTrim {
         private final String trimName;
         private final DriveMethod driveMethod;
         private final FuelType fuelType;
-        private final Double engineDisplacement;
+        private final Integer engineDisplacement;
         private final Double carPrice;
         private final Double toleranceWeight;
         private final String frontTireSpecification;

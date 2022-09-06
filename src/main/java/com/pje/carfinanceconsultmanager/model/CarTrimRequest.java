@@ -34,7 +34,7 @@ public class CarTrimRequest {
 
     @ApiModelProperty(notes = "차량 배기량", required = true)
     @NotNull
-    private Double engineDisplacement;
+    private Integer engineDisplacement;
 
     @ApiModelProperty(notes = "차량 가격", required = true)
     @NotNull

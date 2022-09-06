@@ -35,7 +35,7 @@ public class CarModel {
     private CarReleaseStatus carReleaseStatus;
 
     @Column(nullable = false)
-    private Double capacity; //차량 정원
+    private Integer capacity; //차량 정원
 
     @Column(nullable = false)
     private Double fullLength; //차량 전장
@@ -103,7 +103,7 @@ public class CarModel {
         private final VehicleType vehicleType; //차량 외장 타입
 
         private final CarReleaseStatus carReleaseStatus;
-        private final Double capacity; //차량 정원
+        private final Integer capacity; //차량 정원
         private final Double fullLength; //차량 전장
         private final Double fullWidth; //차량 전폭
         private final Double fullHeight; //차량 전고

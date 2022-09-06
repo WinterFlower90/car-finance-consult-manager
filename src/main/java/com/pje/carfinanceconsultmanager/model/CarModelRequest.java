@@ -33,7 +33,7 @@ public class CarModelRequest {
 
     @ApiModelProperty(notes = "차량 정원", required = true)
     @NotNull
-    private Double capacity; //차량 정원
+    private Integer capacity; //차량 정원
 
     @ApiModelProperty(notes = "차량 전장", required = true)
     @NotNull
