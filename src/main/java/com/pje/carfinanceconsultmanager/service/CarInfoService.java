@@ -87,7 +87,17 @@ public class CarInfoService {
         Integer maxCapacity = capacity.get(0);
         Integer minCapacity = capacity.get(capacity.size() - 1);
 
-        return new CarInfoDetailResponse.CarInfoDetailResponseBuilder(carModel, minPrice, maxPrice, carFuelTypesResult, minDisplacement, maxDisplacement, minFuelEfficiency, maxFuelEfficiency, minCapacity, maxCapacity).build();
+        return new CarInfoDetailResponse.CarInfoDetailResponseBuilder(
+                carModel,
+                minPrice,
+                maxPrice,
+                carFuelTypesResult,
+                minDisplacement,
+                maxDisplacement,
+                minFuelEfficiency,
+                maxFuelEfficiency,
+                minCapacity,
+                maxCapacity).build();
     }
 
     public Manufacturer getManufacturerData(long id) {
@@ -139,6 +149,7 @@ public class CarInfoService {
         });
         return ListConvertService.settingResult(result);
     }
+
 
     public void putManufacturer(long manufacturerId, ManufacturerRequest request) {
         Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).orElseThrow(CMissingDataException::new);
