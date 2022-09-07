@@ -76,6 +76,26 @@ public class CarModel {
     @Column(nullable = false)
     private LocalDateTime dateUpdate;
 
+    public void putCarModel(Manufacturer manufacturer, CarModelRequest request) {
+        this.manufacturer = manufacturer;
+        this.modelName = request.getModelName();
+        this.vehicleType = request.getVehicleType();
+        this.carReleaseStatus = request.getCarReleaseStatus();
+        this.capacity = request.getCapacity();
+        this.fullLength = request.getFullLength();
+        this.fullWidth = request.getFullWidth();
+        this.fullHeight = request.getFullHeight();
+        this.wheelBase = request.getWheelBase();
+        this.beforeWheelTrack = request.getBeforeWheelTrack();
+        this.afterWheelTrack = request.getAfterWheelTrack();
+        this.frontWheelBrake = request.getFrontWheelBrake();
+        this.rearWheelBrake = request.getRearWheelBrake();
+        this.frontWheelSuspension = request.getFrontWheelSuspension();
+        this.rearWheelSuspension = request.getRearWheelSuspension();
+        this.powerSteeringFormat = request.getPowerSteeringFormat();
+        this.dateUpdate = LocalDateTime.now();
+    }
+
     private CarModel(CarModelBuilder builder) {
         this.manufacturer = builder.manufacturer;
         this.modelName = builder.modelName;
@@ -117,6 +137,7 @@ public class CarModel {
         private final String powerSteeringFormat; //파워 스티어링 형식
         private final LocalDateTime dateCreate;
         private final LocalDateTime dateUpdate;
+
 
         public CarModelBuilder(Manufacturer manufacturer, CarModelRequest request) {
             this.manufacturer = manufacturer;

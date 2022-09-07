@@ -146,5 +146,11 @@ public class CarInfoService {
         manufacturerRepository.save(manufacturer);
     }
 
+    public void putCarModel(long carModelId, Manufacturer manufacturer, CarModelRequest request) {
+        CarModel carModel = carModelRepository.findById(carModelId).orElseThrow(CMissingDataException::new);
+        carModel.putCarModel(manufacturer, request);
+        carModelRepository.save(carModel);
+    }
+
 
 }

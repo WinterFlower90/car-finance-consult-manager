@@ -23,14 +23,14 @@ public class CarInfoController {
     private final CarInfoService carInfoService;
 
     @ApiOperation(value = "제조사 정보 등록하기")
-    @PostMapping("/new/carManufacturer")
+    @PostMapping("/new/car-manufacturer")
     public CommonResult setManufacturer(@RequestBody @Valid ManufacturerRequest request) {
         carInfoService.setManufacturer(request);
         return ResponseService.getSuccessResult();
     }
 
     @ApiOperation(value = "자동차 모델 정보 등록하기")
-    @PostMapping("/new/carModel")
+    @PostMapping("/new/car-model")
     public CommonResult setCarModel(@RequestBody @Valid CarModelRequest request) {
         Manufacturer manufacturer = carInfoService.getManufacturerData(request.getManufacturerId());
         carInfoService.setCarModel(manufacturer, request);
@@ -38,7 +38,7 @@ public class CarInfoController {
     }
 
     @ApiOperation(value = "자동차 등급 정보 등록하기")
-    @PostMapping("/new/carRating")
+    @PostMapping("/new/car-rating")
     public CommonResult setCarRating(@RequestBody @Valid CarRatingRequest request) {
         CarModel carModel = carInfoService.getCarModelData(request.getCarModelId());
         carInfoService.setCarRating(carModel, request);
@@ -46,7 +46,7 @@ public class CarInfoController {
     }
 
     @ApiOperation(value = "자동차 트림 정보 등록하기")
-    @PostMapping("/new/carTrim")
+    @PostMapping("/new/car-trim")
     public CommonResult setCarTrim(@RequestBody @Valid CarTrimRequest request) {
         CarRating carRating = carInfoService.getCarRatingData(request.getCarRatingId());
         carInfoService.setCarTrim(carRating, request);
@@ -72,9 +72,19 @@ public class CarInfoController {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "id", value = "제조사 시퀀스", required = true)
     })
-    @PutMapping("/carManufacturer/{manufacturerId}")
+    @PutMapping("/car-manufacturer/{manufacturerId}")
     public CommonResult putManufacturer(@PathVariable long manufacturerId, @RequestBody @Valid ManufacturerRequest request) {
         carInfoService.putManufacturer(manufacturerId, request);
+        return ResponseService.getSuccessResult();
+    }
+
+    @ApiOperation(value = "자동차 모델 정보 수정하기")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "자동차 모델 시퀀스", required = true)
+    })
+    @PutMapping("/car-model/{carModelId}")
+    public CommonResult putCarModel(@PathVariable long carModelId, Manufacturer manufacturer, @RequestBody @Valid CarModelRequest request) {
+        carInfoService.putCarModel(carModelId, manufacturer, request);
         return ResponseService.getSuccessResult();
     }
 }
