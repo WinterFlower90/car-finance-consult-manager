@@ -31,6 +31,12 @@ public class Manufacturer {
     @Column(nullable = false)
     private LocalDateTime dateUpdate;
 
+    public void putManufacturer(ManufacturerRequest request) {
+        this.manufacturerCompany = request.getManufacturerCompany();
+        this.manufacturerLogoUri = request.getManufacturerLogoUri();
+        this.dateUpdate = LocalDateTime.now();
+    }
+
     private Manufacturer(ManufacturerBuilder builder) {
         this.manufacturerCompany = builder.manufacturerCompany;
         this.dateCreate = builder.dateCreate;

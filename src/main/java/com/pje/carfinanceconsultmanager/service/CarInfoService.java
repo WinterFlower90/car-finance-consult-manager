@@ -94,19 +94,40 @@ public class CarInfoService {
         return manufacturerRepository.findById(id).orElseThrow(CMissingDataException::new);
     }
 
+    public CarModel getCarModelData(long id) {
+        return carModelRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public CarRating getCarRatingData(long id) {
+        return carRatingRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
+    public CarTrim getCarTrimData(long id) {
+        return carTrimRepository.findById(id).orElseThrow(CMissingDataException::new);
+    }
+
     public void setManufacturer(ManufacturerRequest request) {
         Manufacturer manufacturer = new Manufacturer.ManufacturerBuilder(request).build();
         manufacturerRepository.save(manufacturer);
-    }
-
-    public CarModel getCarModelData(long id) {
-        return carModelRepository.findById(id).orElseThrow(CMissingDataException::new);
     }
 
     public void setCarModel(Manufacturer manufacturer, CarModelRequest modelRequest) {
         CarModel carModel = new CarModel.CarModelBuilder(manufacturer, modelRequest).build();
         carModelRepository.save(carModel);
     }
+
+
+    public void setCarRating(CarModel carModel, CarRatingRequest request) {
+        CarRating carRating = new CarRating.CarRatingBuilder(carModel, request).build();
+        carRatingRepository.save(carRating);
+    }
+
+
+    public void setCarTrim(CarRating carRating, CarTrimRequest request) {
+        CarTrim carTrim = new CarTrim.CarTrimBuilder(carRating, request).build();
+        carTrimRepository.save(carTrim);
+    }
+
 
     public ListResult<CarListItem> getCarModels() {
         List<CarModel> carModels = carModelRepository.findAll();
@@ -119,22 +140,10 @@ public class CarInfoService {
         return ListConvertService.settingResult(result);
     }
 
-    public CarRating getCarRatingData(long id) {
-        return carRatingRepository.findById(id).orElseThrow(CMissingDataException::new);
-    }
-
-    public void setCarRating(CarModel carModel, CarRatingRequest request) {
-        CarRating carRating = new CarRating.CarRatingBuilder(carModel, request).build();
-        carRatingRepository.save(carRating);
-    }
-
-    public CarTrim getCarTrimData(long id) {
-        return carTrimRepository.findById(id).orElseThrow(CMissingDataException::new);
-    }
-
-    public void setCarTrim(CarRating carRating, CarTrimRequest request) {
-        CarTrim carTrim = new CarTrim.CarTrimBuilder(carRating, request).build();
-        carTrimRepository.save(carTrim);
+    public void putManufacturer(long manufacturerId, ManufacturerRequest request) {
+        Manufacturer manufacturer = manufacturerRepository.findById(manufacturerId).orElseThrow(CMissingDataException::new);
+        manufacturer.putManufacturer(request);
+        manufacturerRepository.save(manufacturer);
     }
 
 
