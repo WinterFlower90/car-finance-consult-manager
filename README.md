@@ -9,8 +9,9 @@
 ___
 
 
-#### LANGUAGE
+#### SKILL
 * JAVA 16
+* JPA
 * SpringBoot 2.7.3
 ___
 
